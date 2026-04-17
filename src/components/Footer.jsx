@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Twitter, Linkedin, Leaf } from 'lucide-react';
+import { Instagram, Facebook, Leaf } from 'lucide-react';
 import Logo from './Logo.jsx';
 
 const cols = [
@@ -52,7 +52,7 @@ export default function Footer() {
               Premium refurbished telefoons. Goed voor je portemonnee, geweldig voor de planeet.
             </p>
             <div className="mt-6 flex items-center gap-3">
-              {[Instagram, Facebook, Twitter, Linkedin].map((Icon, i) => (
+              {[Instagram, Facebook].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"

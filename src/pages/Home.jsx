@@ -79,9 +79,9 @@ export default function Home() {
 
             <div className="mt-14 grid grid-cols-3 gap-4 max-w-xl mx-auto">
               {[
-                { v: '50.000+', l: 'Tevreden klanten' },
-                { v: '4,9/5', l: 'Beoordeling' },
-                { v: '2 jaar', l: 'Garantie' }
+                { v: '72-punten', l: 'Inspectie per toestel' },
+                { v: '30 dagen', l: 'Retour zonder reden' },
+                { v: '2 jaar', l: 'Garantie op alles' }
               ].map((s) => (
                 <div key={s.l} className="text-center">
                   <div className="text-2xl md:text-3xl font-black gradient-text">{s.v}</div>
@@ -181,10 +181,10 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { v: '150M+', l: 'Telefoons jaarlijks weggegooid' },
-                { v: '€350', l: 'Gemiddelde besparing per telefoon' },
-                { v: '85kg', l: 'CO₂ bespaard per toestel' },
-                { v: '2.600t', l: 'CO₂ voorkomen door Pixel klanten' }
+                { v: '150M+', l: 'Telefoons jaarlijks wereldwijd weggegooid' },
+                { v: 'Tot 70%', l: 'Mogelijke besparing t.o.v. nieuw' },
+                { v: '85 kg', l: 'CO₂ bespaard per refurbished toestel' },
+                { v: '80%', l: 'Minder e-waste door hergebruik' }
               ].map((s) => (
                 <div key={s.l} className="card p-6">
                   <div className="text-3xl font-black gradient-text">{s.v}</div>
@@ -204,7 +204,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl font-black tracking-tight">
               Mensen lijken ons <span className="gradient-text">leuk te vinden</span>
             </h2>
-            <p className="mt-4 text-slate-600">4,9/5 uit 50.000+ reviews</p>
+            <p className="mt-4 text-slate-600">Echte ervaringen van echte klanten</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
