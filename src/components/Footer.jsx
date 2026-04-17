@@ -88,12 +88,16 @@ export default function Footer() {
             © {new Date().getFullYear()} Pixel — Alle rechten voorbehouden
           </p>
           <div className="flex items-center gap-3 flex-wrap">
-            {['iDEAL', 'Mastercard', 'VISA', 'PayPal', 'Apple Pay'].map((p) => (
+            {[
+              { src: '/payments/iDEAL-Medium-Card.svg', alt: 'iDEAL' },
+              { src: '/payments/Mastercard-Medium-Card.svg', alt: 'Mastercard' },
+              { src: '/payments/Apple-Pay-Medium-Card.svg', alt: 'Apple Pay' }
+            ].map((p) => (
               <div
-                key={p}
-                className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700"
+                key={p.alt}
+                className="h-8 bg-white border border-slate-200 rounded-lg px-2 flex items-center"
               >
-                {p}
+                <img src={p.src} alt={p.alt} className="h-5 w-auto" />
               </div>
             ))}
           </div>

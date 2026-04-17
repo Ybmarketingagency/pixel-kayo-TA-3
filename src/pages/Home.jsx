@@ -1,7 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ShieldCheck, RotateCcw, BatteryFull, Truck, Leaf, Award, Sparkles,
-  ArrowRight, Recycle, CheckCircle2, Star, Quote
+  ArrowRight, Recycle, CheckCircle2, Star, Quote, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import ProductCard from '../components/ProductCard.jsx';
 import { products } from '../data/products.js';
@@ -29,12 +30,24 @@ const process = [
 ];
 
 const reviews = [
-  { name: 'Sanne de Vries', text: 'Mijn iPhone 14 ziet eruit als nieuw en werkt perfect. De besparing was enorm.', rating: 5 },
-  { name: 'Mark Janssen', text: 'Snelle levering, goed verpakt. De 2 jaar garantie gaf me het vertrouwen.', rating: 5 },
-  { name: 'Lisa Bakker', text: 'Supergoed proces. Ik verkocht mijn oude telefoon en kreeg direct mijn nieuwe.', rating: 5 }
+  { name: 'Sanne de Vries', text: 'Mijn iPhone 14 ziet eruit als nieuw en werkt perfect. De besparing was enorm en de levering ging razendsnel.', rating: 5, product: 'iPhone 14' },
+  { name: 'Mark Janssen', text: 'Snelle levering, goed verpakt. De 2 jaar garantie gaf me het vertrouwen om refurbished te proberen.', rating: 5, product: 'Samsung Galaxy S23' },
+  { name: 'Lisa Bakker', text: 'Supergoed proces. Ik verkocht mijn oude telefoon en kreeg direct mijn nieuwe. Alles binnen één week geregeld.', rating: 5, product: 'iPhone 15 Pro' },
+  { name: 'Tom van Dijk', text: 'Prachtige kwaliteit, geen krasje te bekennen. De batterij is top en alles werkt als vanouds.', rating: 5, product: 'Google Pixel 8' },
+  { name: 'Emma Visser', text: 'Ik was sceptisch over refurbished, maar Pixel heeft me overtuigd. Geweldige klantenservice ook!', rating: 5, product: 'iPhone 13' },
+  { name: 'Daan Smit', text: 'Beste keuze ooit. Bespaarde honderden euro\'s en nog goed voor de planeet ook.', rating: 5, product: 'OnePlus 11' },
+  { name: 'Fleur Hendriks', text: 'Communicatie was uitstekend, track & trace werkt perfect. Mijn telefoon kwam in mint conditie.', rating: 5, product: 'iPhone 12' },
+  { name: 'Julian Bos', text: 'Van bestelling tot ontvangst: alles gladjes verlopen. Absoluut een aanrader voor iedereen.', rating: 5, product: 'Galaxy S22' },
+  { name: 'Nina Peters', text: 'Super blij met mijn aankoop. De 30 dagen retour gaf me de rust om te proberen, maar houden!', rating: 5, product: 'Xiaomi 13' }
 ];
 
+const REVIEWS_PER_PAGE = 3;
+
 export default function Home() {
+  const [reviewPage, setReviewPage] = useState(0);
+  const totalPages = Math.ceil(reviews.length / REVIEWS_PER_PAGE);
+  const visibleReviews = reviews.slice(reviewPage * REVIEWS_PER_PAGE, reviewPage * REVIEWS_PER_PAGE + REVIEWS_PER_PAGE);
+
   return (
     <>
       {/* HERO */}
@@ -193,8 +206,9 @@ export default function Home() {
             </h2>
             <p className="mt-4 text-slate-600">4,9/5 uit 50.000+ reviews</p>
           </div>
+
           <div className="grid md:grid-cols-3 gap-6">
-            {reviews.map((r) => (
+            {visibleReviews.map((r) => (
               <div key={r.name} className="card p-8">
                 <Quote className="w-8 h-8 text-brand-200 mb-4" />
                 <div className="flex gap-1 mb-3">
@@ -209,11 +223,41 @@ export default function Home() {
                   </div>
                   <div>
                     <div className="font-semibold text-sm">{r.name}</div>
-                    <div className="text-xs text-slate-500">Geverifieerde koper</div>
+                    <div className="text-xs text-slate-500">Over {r.product} · Geverifieerde koper</div>
                   </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Carousel controls */}
+          <div className="mt-10 flex items-center justify-center gap-3">
+            <button
+              onClick={() => setReviewPage((p) => (p - 1 + totalPages) % totalPages)}
+              className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-brand-500 hover:text-brand-700 hover:shadow-md transition"
+              aria-label="Vorige reviews"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <div className="flex items-center gap-2 px-4">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setReviewPage(i)}
+                  className={`h-2 rounded-full transition-all ${
+                    i === reviewPage ? 'w-8 bg-gradient-to-r from-brand-600 to-cyan-600' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                  }`}
+                  aria-label={`Pagina ${i + 1}`}
+                />
+              ))}
+            </div>
+            <button
+              onClick={() => setReviewPage((p) => (p + 1) % totalPages)}
+              className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:border-brand-500 hover:text-brand-700 hover:shadow-md transition"
+              aria-label="Volgende reviews"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
       </section>

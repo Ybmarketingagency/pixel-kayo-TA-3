@@ -22,7 +22,7 @@ export const products = [
     originalPrice: 1229,
     rating: 4.9,
     reviews: 412,
-    image: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'De iPhone 15 Pro met A17 Pro chip, titanium behuizing en geavanceerd camerasysteem.'
   },
   {
@@ -37,7 +37,7 @@ export const products = [
     originalPrice: 879,
     rating: 4.8,
     reviews: 328,
-    image: 'https://images.unsplash.com/photo-1663499482523-1c0c1bae4ce1?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'iPhone 14 met krachtige A15 Bionic chip en superieure camera kwaliteit.'
   },
   {
@@ -52,7 +52,7 @@ export const products = [
     originalPrice: 729,
     rating: 4.7,
     reviews: 602,
-    image: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'Betrouwbare iPhone 13 met uitstekende batterijduur en ceramic shield display.'
   },
   {
@@ -67,7 +67,7 @@ export const products = [
     originalPrice: 899,
     rating: 4.8,
     reviews: 245,
-    image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'Vlaggenschip Samsung met Snapdragon 8 Gen 2 en Dynamic AMOLED 2X display.'
   },
   {
@@ -82,7 +82,7 @@ export const products = [
     originalPrice: 799,
     rating: 4.7,
     reviews: 189,
-    image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'Google Pixel 8 met Tensor G3 en AI-powered Magic Editor.'
   },
   {
@@ -97,7 +97,7 @@ export const products = [
     originalPrice: 639,
     rating: 4.6,
     reviews: 814,
-    image: 'https://images.unsplash.com/photo-1603891128711-11b4b03bb138?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'iPhone 12 met 5G, OLED Super Retina XDR display en A14 Bionic.'
   },
   {
@@ -112,7 +112,7 @@ export const products = [
     originalPrice: 749,
     rating: 4.6,
     reviews: 410,
-    image: 'https://images.unsplash.com/photo-1644501635454-3ffd77fe28a1?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'Galaxy S22 met compacte vormgeving en pro-grade camera.'
   },
   {
@@ -127,7 +127,7 @@ export const products = [
     originalPrice: 849,
     rating: 4.7,
     reviews: 134,
-    image: 'https://images.unsplash.com/photo-1674268749638-25a0b486f04f?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'OnePlus 11 met Hasselblad camera en snel 100W opladen.'
   },
   {
@@ -142,7 +142,7 @@ export const products = [
     originalPrice: 969,
     rating: 4.9,
     reviews: 221,
-    image: 'https://images.unsplash.com/photo-1696446702183-be9765f20071?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'Nieuwste iPhone 15 met USB-C, Dynamic Island en 48MP camera.'
   },
   {
@@ -157,7 +157,7 @@ export const products = [
     originalPrice: 649,
     rating: 4.5,
     reviews: 267,
-    image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'Pixel 7 met Tensor G2 en pure Android ervaring.'
   },
   {
@@ -172,7 +172,7 @@ export const products = [
     originalPrice: 799,
     rating: 4.6,
     reviews: 98,
-    image: 'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'Xiaomi 13 met Leica camera en Snapdragon 8 Gen 2.'
   },
   {
@@ -187,7 +187,7 @@ export const products = [
     originalPrice: 519,
     rating: 4.4,
     reviews: 1132,
-    image: 'https://images.unsplash.com/photo-1574755393849-623942496936?w=800&q=80',
+    image: 'https://i.imgur.com/yiqQxAm.jpeg',
     description: 'Betaalbare iPhone 11 met dual-camera en lange batterijduur.'
   }
 ];

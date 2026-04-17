@@ -20,10 +20,10 @@ export default function Checkout() {
   const total = subtotal + shipping;
 
   const paymentMethods = [
-    { k: 'ideal', t: 'iDEAL', d: 'Direct betalen via je bank' },
-    { k: 'card', t: 'Creditcard', d: 'Visa, Mastercard' },
-    { k: 'paypal', t: 'PayPal', d: 'Betaal met je PayPal account' },
-    { k: 'klarna', t: 'Klarna', d: 'Achteraf betalen in 3 termijnen' }
+    { k: 'ideal', t: 'iDEAL', d: 'Direct betalen via je bank', img: '/payments/iDEAL-Medium-Card.svg' },
+    { k: 'card', t: 'Mastercard', d: 'Betaal met je creditcard', img: '/payments/Mastercard-Medium-Card.svg' },
+    { k: 'apple', t: 'Apple Pay', d: 'Snel betalen met Apple Pay', img: '/payments/Apple-Pay-Medium-Card.svg' },
+    { k: 'klarna', t: 'Klarna', d: 'Achteraf betalen in 3 termijnen', img: null }
   ];
 
   return (
@@ -117,8 +117,12 @@ export default function Checkout() {
                         payment === m.k ? 'border-brand-500 bg-brand-50' : 'border-slate-200 hover:border-slate-300'
                       }`}
                     >
-                      <div className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center font-bold text-xs">
-                        {m.t.slice(0, 2).toUpperCase()}
+                      <div className="w-14 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center font-bold text-xs overflow-hidden">
+                        {m.img ? (
+                          <img src={m.img} alt={m.t} className="h-6 w-auto" />
+                        ) : (
+                          <span>{m.t}</span>
+                        )}
                       </div>
                       <div className="flex-1">
                         <div className="font-semibold">{m.t}</div>

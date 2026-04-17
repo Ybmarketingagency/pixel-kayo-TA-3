@@ -18,17 +18,10 @@ export default function Header() {
     <header className="sticky top-0 z-40">
       {/* Top bar */}
       <div className="bg-navy-900 text-white text-xs">
-        <div className="container-x flex items-center justify-between py-2 gap-4">
-          <div className="hidden md:flex items-center gap-6">
-            <span className="flex items-center gap-2"><Truck className="w-3.5 h-3.5 text-brand-400" /> Gratis verzending</span>
-            <span className="flex items-center gap-2"><RotateCcw className="w-3.5 h-3.5 text-brand-400" /> 30 dagen retour</span>
-            <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-brand-400" /> 2 jaar garantie</span>
-          </div>
-          <span className="md:hidden flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-brand-400" /> 2 jaar garantie · 30 dagen retour</span>
-          <div className="flex items-center gap-4 text-slate-300">
-            <span className="hidden sm:inline">NL · EUR</span>
-            <span>Help</span>
-          </div>
+        <div className="container-x flex items-center justify-center py-2 gap-6 md:gap-10 flex-wrap">
+          <span className="flex items-center gap-2"><Truck className="w-3.5 h-3.5 text-brand-400" /> Gratis verzending</span>
+          <span className="flex items-center gap-2"><RotateCcw className="w-3.5 h-3.5 text-brand-400" /> 30 dagen retour</span>
+          <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-brand-400" /> 2 jaar garantie</span>
         </div>
       </div>
 
