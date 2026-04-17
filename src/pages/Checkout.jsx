@@ -1,21 +1,19 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Lock, ShieldCheck, Truck, CreditCard, ChevronRight, Minus, Plus, Trash2 } from 'lucide-react';
-import { products } from '../data/products.js';
+import { Lock, ShieldCheck, Truck, CreditCard, ChevronRight, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
+import { useCart } from '../contexts/CartContext.jsx';
 
 export default function Checkout() {
   const [step, setStep] = useState(1);
   const [payment, setPayment] = useState('ideal');
-  const [items, setItems] = useState([
-    { ...products[0], qty: 1 },
-    { ...products[3], qty: 1 }
-  ]);
+  const { items, subtotal, setQty, removeItem, clear } = useCart();
 
-  const updateQty = (slug, delta) =>
-    setItems(items.map((i) => i.slug === slug ? { ...i, qty: Math.max(1, i.qty + delta) } : i));
-  const remove = (slug) => setItems(items.filter((i) => i.slug !== slug));
+  const updateQty = (slug, delta) => {
+    const current = items.find((i) => i.slug === slug);
+    if (current) setQty(slug, Math.max(1, current.qty + delta));
+  };
+  const remove = (slug) => removeItem(slug);
 
-  const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0);
   const shipping = 0;
   const total = subtotal + shipping;
 
@@ -38,6 +36,18 @@ export default function Checkout() {
         </div>
       </section>
 
+      {items.length === 0 ? (
+        <section className="container-x py-20">
+          <div className="card p-12 max-w-xl mx-auto text-center">
+            <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto mb-6">
+              <ShoppingBag className="w-7 h-7 text-slate-400" />
+            </div>
+            <h2 className="text-2xl font-black">Je winkelwagen is leeg</h2>
+            <p className="mt-2 text-slate-500">Voeg eerst een telefoon toe om af te rekenen.</p>
+            <Link to="/products" className="btn-primary mt-8 inline-flex">Bekijk telefoons</Link>
+          </div>
+        </section>
+      ) : (
       <section className="container-x py-10">
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
@@ -159,7 +169,7 @@ export default function Checkout() {
                 </div>
                 <div className="flex gap-3 mt-8">
                   <button onClick={() => setStep(2)} className="btn-outline">Terug</button>
-                  <button onClick={() => alert('Bestelling geplaatst!')} className="btn-primary flex-1">
+                  <button onClick={() => { alert('Bestelling geplaatst!'); clear(); setStep(1); }} className="btn-primary flex-1">
                     <Lock className="w-4 h-4" /> Betaal €{total}
                   </button>
                 </div>
@@ -216,6 +226,7 @@ export default function Checkout() {
           </aside>
         </div>
       </section>
+      )}
     </>
   );
 }

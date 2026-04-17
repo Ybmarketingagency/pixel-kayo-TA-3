@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { Search, ShoppingBag, User, Menu, X, Truck, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import Logo from './Logo.jsx';
 import SearchDialog from './SearchDialog.jsx';
+import { useCart } from '../contexts/CartContext.jsx';
 
 const nav = [
   { to: '/products', label: 'Telefoons' },
@@ -15,6 +16,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const openSearch = () => setSearchOpen(true);
+  const { count } = useCart();
 
   useEffect(() => {
     const onKey = (e) => {
@@ -81,7 +83,11 @@ export default function Header() {
             </Link>
             <Link to="/checkout" className="relative p-2 rounded-full hover:bg-slate-100" aria-label="Winkelwagen">
               <ShoppingBag className="w-5 h-5" />
-              <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] text-[10px] font-bold rounded-full bg-gradient-to-r from-brand-600 to-cyan-600 text-white flex items-center justify-center px-1">2</span>
+              {count > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] text-[10px] font-bold rounded-full bg-gradient-to-r from-brand-600 to-cyan-600 text-white flex items-center justify-center px-1">
+                  {count}
+                </span>
+              )}
             </Link>
             <button
               onClick={() => setOpen(!open)}
