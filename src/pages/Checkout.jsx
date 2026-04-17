@@ -174,7 +174,7 @@ export default function Checkout() {
               <div className="space-y-4 max-h-[320px] overflow-auto pr-1">
                 {items.map((it) => (
                   <div key={it.slug} className="flex gap-3">
-                    <img src={it.image} alt={it.name} className="w-16 h-16 rounded-xl object-cover bg-slate-100 flex-shrink-0" />
+                    <img src={it.images?.[0] || it.image} alt={it.name} className="w-16 h-16 rounded-xl object-contain bg-slate-50 p-1 flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <div className="font-semibold text-sm truncate">{it.name}</div>
                       <div className="text-xs text-slate-500">{it.storage} · {it.color}</div>

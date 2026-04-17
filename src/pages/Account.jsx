@@ -53,7 +53,7 @@ export default function Account() {
             <div className="space-y-3">
               {orders.map((o) => (
                 <div key={o.id} className="flex items-center gap-4 p-4 rounded-2xl border border-slate-200 hover:border-brand-500 transition">
-                  <img src={products[0].image} alt="" className="w-14 h-14 rounded-xl object-cover bg-slate-100" />
+                  <img src={products[0].images?.[0] || products[0].image} alt="" className="w-14 h-14 rounded-xl object-contain bg-slate-50 p-1" />
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold">{o.id}</div>
                     <div className="text-sm text-slate-500">{o.items} item · {o.date}</div>

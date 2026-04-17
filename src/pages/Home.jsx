@@ -33,12 +33,12 @@ const reviews = [
   { name: 'Sanne de Vries', text: 'Mijn iPhone 14 ziet eruit als nieuw en werkt perfect. De besparing was enorm en de levering ging razendsnel.', rating: 5, product: 'iPhone 14' },
   { name: 'Mark Janssen', text: 'Snelle levering, goed verpakt. De garantie gaf me het vertrouwen om refurbished te proberen.', rating: 5, product: 'Samsung Galaxy S23' },
   { name: 'Lisa Bakker', text: 'Supergoed proces. Ik verkocht mijn oude telefoon en kreeg direct mijn nieuwe. Alles binnen één week geregeld.', rating: 5, product: 'iPhone 15 Pro' },
-  { name: 'Tom van Dijk', text: 'Prachtige kwaliteit, geen krasje te bekennen. De batterij is top en alles werkt als vanouds.', rating: 5, product: 'Google Pixel 8' },
+  { name: 'Tom van Dijk', text: 'Prachtige kwaliteit, geen krasje te bekennen. De batterij is top en alles werkt als vanouds.', rating: 5, product: 'iPhone 16 Pro' },
   { name: 'Emma Visser', text: 'Ik was sceptisch over refurbished, maar Pixel heeft me overtuigd. Geweldige klantenservice ook!', rating: 5, product: 'iPhone 13' },
-  { name: 'Daan Smit', text: 'Beste keuze ooit. Bespaarde honderden euro\'s en nog goed voor de planeet ook.', rating: 5, product: 'OnePlus 11' },
-  { name: 'Fleur Hendriks', text: 'Communicatie was uitstekend, track & trace werkt perfect. Mijn telefoon kwam in mint conditie.', rating: 5, product: 'iPhone 12' },
-  { name: 'Julian Bos', text: 'Van bestelling tot ontvangst: alles gladjes verlopen. Absoluut een aanrader voor iedereen.', rating: 5, product: 'Galaxy S22' },
-  { name: 'Nina Peters', text: 'Super blij met mijn aankoop. Snelle levering en de telefoon werkt perfect!', rating: 5, product: 'Xiaomi 13' }
+  { name: 'Daan Smit', text: 'Beste keuze ooit. Bespaarde honderden euro\'s en nog goed voor de planeet ook.', rating: 5, product: 'Samsung S24' },
+  { name: 'Fleur Hendriks', text: 'Communicatie was uitstekend, track & trace werkt perfect. Mijn telefoon kwam in mint conditie.', rating: 5, product: 'iPhone 15 Plus' },
+  { name: 'Julian Bos', text: 'Van bestelling tot ontvangst: alles gladjes verlopen. Absoluut een aanrader voor iedereen.', rating: 5, product: 'Galaxy S22 Ultra' },
+  { name: 'Nina Peters', text: 'Super blij met mijn aankoop. Snelle levering en de telefoon werkt perfect!', rating: 5, product: 'Galaxy S25 Ultra' }
 ];
 
 const REVIEWS_PER_PAGE = 3;

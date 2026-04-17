@@ -7,9 +7,8 @@ const cols = [
     title: 'Shop',
     links: [
       { to: '/products', label: 'Alle telefoons' },
-      { to: '/products?brand=Apple', label: 'Apple' },
+      { to: '/products?brand=Apple', label: 'iPhone' },
       { to: '/products?brand=Samsung', label: 'Samsung' },
-      { to: '/products?brand=Google', label: 'Google' },
       { to: '/verkopen', label: 'Verkoop je telefoon' }
     ]
   },
@@ -52,12 +51,17 @@ export default function Footer() {
               Premium refurbished telefoons. Goed voor je portemonnee, geweldig voor de planeet.
             </p>
             <div className="mt-6 flex items-center gap-3">
-              {[Instagram, Facebook].map((Icon, i) => (
+              {[
+                { Icon: Instagram, href: 'https://www.instagram.com/pixel.refurbished/', label: 'Instagram' },
+                { Icon: Facebook, href: 'https://www.facebook.com/Pixel.Refurbished', label: 'Facebook' }
+              ].map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center hover:bg-brand-50 hover:border-brand-200 hover:text-brand-700 transition"
-                  aria-label="Social"
+                  aria-label={label}
                 >
                   <Icon className="w-4 h-4" />
                 </a>

@@ -4,19 +4,19 @@ import {
   ChevronRight, Heart, ShoppingBag, Star, BatteryMedium, Truck, ShieldCheck,
   CheckCircle2, Minus, Plus, Zap
 } from 'lucide-react';
-import { getProduct, getCondition, products } from '../data/products.js';
+import { getProduct, products } from '../data/products.js';
 import ProductCard from '../components/ProductCard.jsx';
 
 export default function ProductDetail() {
   const { slug } = useParams();
   const product = getProduct(slug) || products[0];
-  const cond = getCondition(product.condition);
+  const images = product.images || [product.image];
+  const [active, setActive] = useState(0);
   const [qty, setQty] = useState(1);
   const [selectedStorage, setSelectedStorage] = useState(product.storage);
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
   const storageOptions = ['128GB', '256GB', '512GB'];
-
   const related = products.filter((p) => p.brand === product.brand && p.slug !== product.slug).slice(0, 4);
 
   return (
@@ -37,20 +37,21 @@ export default function ProductDetail() {
           {/* Gallery */}
           <div>
             <div className="card aspect-square overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 relative">
-              <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
-              <span className={`absolute top-4 left-4 text-xs font-semibold px-3 py-1.5 rounded-full ${cond.color}`}>
-                {cond.label}
-              </span>
+              <img src={images[active]} alt={product.name} className="w-full h-full object-contain p-8" />
               {discount > 0 && (
                 <span className="absolute top-4 right-4 text-sm font-bold px-3 py-1.5 rounded-full bg-rose-600 text-white">
                   -{discount}%
                 </span>
               )}
             </div>
-            <div className="mt-4 grid grid-cols-4 gap-3">
-              {[0, 1, 2, 3].map((i) => (
-                <button key={i} className={`aspect-square rounded-2xl overflow-hidden border-2 ${i === 0 ? 'border-brand-500' : 'border-transparent'} bg-slate-50`}>
-                  <img src={product.image} alt="" className="w-full h-full object-cover" />
+            <div className="mt-4 grid grid-cols-5 gap-3">
+              {images.map((src, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={`aspect-square rounded-2xl overflow-hidden border-2 transition ${i === active ? 'border-brand-500' : 'border-transparent hover:border-slate-300'} bg-slate-50`}
+                >
+                  <img src={src} alt="" className="w-full h-full object-contain p-2" />
                 </button>
               ))}
             </div>
@@ -83,11 +84,20 @@ export default function ProductDetail() {
               <BatteryMedium className="w-4 h-4 text-emerald-600" />
               <span className="font-medium">{product.battery}% batterij</span>
               <span className="text-slate-400">·</span>
-              <span className="text-slate-600">Anders gratis vervangen</span>
+              <span className="text-slate-600">Getest en goedgekeurd</span>
+            </div>
+
+            {/* Color info */}
+            <div className="mt-8">
+              <div className="text-sm font-semibold mb-2">Kleur</div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-sm font-medium">
+                <span className="w-3 h-3 rounded-full bg-gradient-to-br from-brand-400 to-cyan-400" />
+                {product.color}
+              </div>
             </div>
 
             {/* Storage */}
-            <div className="mt-8">
+            <div className="mt-6">
               <div className="text-sm font-semibold mb-3">Opslag</div>
               <div className="flex gap-2">
                 {storageOptions.map((s) => (

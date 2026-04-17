@@ -1,35 +1,26 @@
 import { Link } from 'react-router-dom';
 import { Heart, BatteryMedium, Star } from 'lucide-react';
-import { getCondition } from '../data/products.js';
 
 export default function ProductCard({ product }) {
-  const cond = getCondition(product.condition);
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+  const image = product.images?.[0] || product.image;
 
   return (
     <Link to={`/product/${product.slug}`} className="group card overflow-hidden block">
       <div className="relative aspect-square bg-gradient-to-br from-slate-50 to-slate-100 overflow-hidden">
         <img
-          src={product.image}
+          src={image}
           alt={product.name}
           loading="lazy"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          onError={(e) => {
-            e.currentTarget.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect fill="%23f1f5f9" width="400" height="400"/><text x="50%25" y="50%25" font-family="Inter" font-size="20" fill="%2394a3b8" text-anchor="middle" dy=".3em">Pixel</text></svg>';
-          }}
+          className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
         />
-        <span className={`absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full ${cond.color}`}>
-          {cond.label}
-        </span>
         {discount > 0 && (
           <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full bg-rose-600 text-white">
             -{discount}%
           </span>
         )}
         <button
-          onClick={(e) => {
-            e.preventDefault();
-          }}
+          onClick={(e) => e.preventDefault()}
           className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur flex items-center justify-center shadow-sm hover:bg-white hover:text-rose-600 transition"
           aria-label="Toevoegen aan favorieten"
         >

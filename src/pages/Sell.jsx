@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Smartphone, Tag, Mail, ChevronRight, CheckCircle2, DollarSign } from 'lucide-react';
 
-const brandLogos = ['Apple', 'Samsung', 'Google', 'OnePlus', 'Xiaomi', 'Overig'];
+const brandLogos = ['Apple', 'Samsung', 'Overig'];
 const conditionOptions = [
   { k: 'perfect', t: 'Perfect', d: 'Geen krassen, werkt als nieuw', f: 1.0 },
   { k: 'good', t: 'Goed', d: 'Lichte gebruikssporen', f: 0.8 },
@@ -29,7 +29,7 @@ export default function Sell() {
             Verkoop je <span className="gradient-text">telefoon</span>
           </h1>
           <p className="mt-4 text-slate-600 max-w-xl mx-auto">
-            Geef je oude telefoon een tweede leven én verdien er nog aan ook. Gratis verzending, snelle betaling.
+            Geef je oude telefoon een tweede leven én verdien er nog aan ook. Vraag vrijblijvend een bod aan.
           </p>
         </div>
       </section>
@@ -56,7 +56,7 @@ export default function Sell() {
                 <>
                   <h2 className="text-2xl font-bold mb-1">Welk merk?</h2>
                   <p className="text-slate-500 mb-6">Kies het merk van je telefoon</p>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {brandLogos.map((b) => (
                       <button
                         key={b}
@@ -144,7 +144,7 @@ export default function Sell() {
                         Claim mijn bod
                       </button>
                       <p className="text-xs text-slate-500 mt-3 text-center">
-                        Je ontvangt direct een verzendlabel. Betaling binnen 48u na inspectie.
+                        We nemen binnen 24 uur contact met je op om de inruil af te ronden.
                       </p>
                     </div>
                   </div>
@@ -156,9 +156,9 @@ export default function Sell() {
           <div className="lg:col-span-2 space-y-4">
             {[
               { i: Smartphone, t: 'Eenvoudig proces', d: '4 stappen, binnen 2 minuten klaar' },
-              { i: Tag, t: 'Beste prijs', d: 'Transparant en marktconform' },
-              { i: Mail, t: 'Gratis verzending', d: 'Wij regelen het verzendlabel' },
-              { i: DollarSign, t: 'Snelle betaling', d: 'Binnen 48 uur op je rekening' }
+              { i: Tag, t: 'Eerlijke prijs', d: 'Transparant en marktconform bod' },
+              { i: Mail, t: 'Persoonlijk contact', d: 'We mailen je met de volgende stappen' },
+              { i: DollarSign, t: 'Snelle afhandeling', d: 'Bod binnen enkele minuten in je mailbox' }
             ].map((p) => (
               <div key={p.t} className="card p-5 flex items-start gap-4">
                 <div className="w-10 h-10 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center flex-shrink-0">
@@ -171,8 +171,8 @@ export default function Sell() {
               </div>
             ))}
             <div className="card p-6 bg-gradient-to-br from-brand-600 to-cyan-600 text-white border-0">
-              <div className="text-3xl font-black">€1.000.000+</div>
-              <div className="text-white/90 text-sm mt-1">uitbetaald aan verkopers in 2025</div>
+              <div className="text-xl font-black">Ook een defect toestel?</div>
+              <div className="text-white/90 text-sm mt-2">Zelfs voor toestellen met schade of een defect hebben we vaak nog een mooi bod. Vraag het gewoon aan.</div>
             </div>
           </div>
         </div>

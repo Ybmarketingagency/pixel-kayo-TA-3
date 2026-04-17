@@ -1,11 +1,10 @@
 import { useMemo, useState } from 'react';
 import { ChevronRight, SlidersHorizontal } from 'lucide-react';
 import ProductCard from '../components/ProductCard.jsx';
-import { products, brands, conditions } from '../data/products.js';
+import { products, brands } from '../data/products.js';
 
 export default function Products() {
   const [brand, setBrand] = useState([]);
-  const [cond, setCond] = useState([]);
   const [price, setPrice] = useState(1500);
   const [sort, setSort] = useState('featured');
   const [open, setOpen] = useState(false);
@@ -13,14 +12,13 @@ export default function Products() {
   const filtered = useMemo(() => {
     let list = products.filter((p) =>
       (brand.length === 0 || brand.includes(p.brand)) &&
-      (cond.length === 0 || cond.includes(p.condition)) &&
       p.price <= price
     );
     if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price);
     if (sort === 'rating') list = [...list].sort((a, b) => b.rating - a.rating);
     return list;
-  }, [brand, cond, price, sort]);
+  }, [brand, price, sort]);
 
   const toggle = (arr, setArr, val) =>
     setArr(arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val]);
@@ -75,28 +73,11 @@ export default function Products() {
                 </div>
               </div>
 
-              <div className="mb-6">
-                <h4 className="font-semibold text-sm mb-3">Staat</h4>
-                <div className="space-y-2">
-                  {conditions.map((c) => (
-                    <label key={c.key} className="flex items-center gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={cond.includes(c.key)}
-                        onChange={() => toggle(cond, setCond, c.key)}
-                        className="w-4 h-4 accent-brand-600 rounded"
-                      />
-                      <span className="text-sm text-slate-700">{c.label}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
               <div>
                 <h4 className="font-semibold text-sm mb-3">Max prijs: €{price}</h4>
                 <input
                   type="range"
-                  min="100"
+                  min="200"
                   max="1500"
                   step="50"
                   value={price}
@@ -104,7 +85,7 @@ export default function Products() {
                   className="w-full accent-brand-600"
                 />
                 <div className="flex justify-between text-xs text-slate-400 mt-1">
-                  <span>€100</span>
+                  <span>€200</span>
                   <span>€1500</span>
                 </div>
               </div>
@@ -112,7 +93,6 @@ export default function Products() {
               <button
                 onClick={() => {
                   setBrand([]);
-                  setCond([]);
                   setPrice(1500);
                 }}
                 className="mt-6 w-full text-sm font-medium text-brand-700 hover:underline"
@@ -159,25 +139,6 @@ export default function Products() {
                 ))}
               </div>
             )}
-
-            <div className="mt-10 flex items-center justify-center gap-2">
-              {[1, 2, 3].map((n) => (
-                <button
-                  key={n}
-                  className={`w-10 h-10 rounded-full text-sm font-semibold ${
-                    n === 1
-                      ? 'bg-gradient-to-r from-brand-600 to-cyan-600 text-white'
-                      : 'bg-white border border-slate-200 hover:border-brand-500'
-                  }`}
-                >
-                  {n}
-                </button>
-              ))}
-              <span className="px-2 text-slate-400">...</span>
-              <button className="w-10 h-10 rounded-full bg-white border border-slate-200 text-sm font-semibold hover:border-brand-500">
-                5
-              </button>
-            </div>
           </div>
         </div>
       </section>
