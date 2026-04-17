@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
-  ChevronRight, Heart, ShoppingBag, Star, BatteryMedium, Truck, ShieldCheck,
-  CheckCircle2, Minus, Plus, Zap, Check
+  ChevronRight, Heart, Star, BatteryMedium, Truck, ShieldCheck,
+  CheckCircle2, Minus, Plus, Zap, MessageCircle
 } from 'lucide-react';
 import { getProduct, products } from '../data/products.js';
 import ProductCard from '../components/ProductCard.jsx';
-import { useCart } from '../contexts/CartContext.jsx';
+import { productOrderUrl } from '../lib/whatsapp.js';
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -14,16 +14,9 @@ export default function ProductDetail() {
   const images = product.images || [product.image];
   const [active, setActive] = useState(0);
   const [qty, setQty] = useState(1);
-  const [added, setAdded] = useState(false);
   const [selectedStorage, setSelectedStorage] = useState(product.storage);
-  const { addItem } = useCart();
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
-
-  const handleAdd = () => {
-    addItem(product.slug, qty);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1800);
-  };
+  const orderHref = productOrderUrl({ ...product, qty });
 
   const storageOptions = ['128GB', '256GB', '512GB'];
   const related = products.filter((p) => p.brand === product.brand && p.slug !== product.slug).slice(0, 4);
@@ -87,7 +80,7 @@ export default function ProductDetail() {
                 Bespaar €{product.originalPrice - product.price}
               </span>
             </div>
-            <p className="mt-1 text-xs text-slate-500">Direct betalen met iDEAL, Bancontact of Apple Pay</p>
+            <p className="mt-1 text-xs text-slate-500">Bestel direct via WhatsApp · Persoonlijke service</p>
 
             <div className="mt-6 flex items-center gap-2 text-sm">
               <BatteryMedium className="w-4 h-4 text-emerald-600" />
@@ -136,16 +129,14 @@ export default function ProductDetail() {
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
-              <button
-                onClick={handleAdd}
-                className={`btn-primary flex-1 ${added ? '!from-emerald-600 !to-emerald-600' : ''}`}
+              <a
+                href={orderHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary flex-1 !bg-gradient-to-r !from-emerald-500 !to-emerald-600"
               >
-                {added ? (
-                  <><Check className="w-4 h-4" /> Toegevoegd</>
-                ) : (
-                  <><ShoppingBag className="w-4 h-4" /> In winkelwagen</>
-                )}
-              </button>
+                <MessageCircle className="w-4 h-4" /> Bestel via WhatsApp
+              </a>
               <button className="p-3 rounded-full border border-slate-200 hover:border-rose-500 hover:text-rose-600 transition">
                 <Heart className="w-5 h-5" />
               </button>
