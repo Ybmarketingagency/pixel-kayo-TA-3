@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Search, ShoppingBag, User, Menu, X, Truck, RotateCcw, ShieldCheck } from 'lucide-react';
+import { Search, ShoppingBag, User, Menu, X, Truck, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import Logo from './Logo.jsx';
+import SearchDialog from './SearchDialog.jsx';
 
 const nav = [
   { to: '/products', label: 'Telefoons' },
@@ -13,6 +14,18 @@ const nav = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const openSearch = () => setSearchOpen(true);
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   return (
     <header className="sticky top-0 z-40">
@@ -20,8 +33,8 @@ export default function Header() {
       <div className="bg-navy-900 text-white text-xs">
         <div className="container-x flex items-center justify-center py-2 gap-6 md:gap-10 flex-wrap">
           <span className="flex items-center gap-2"><Truck className="w-3.5 h-3.5 text-brand-400" /> Gratis verzending</span>
-          <span className="flex items-center gap-2"><RotateCcw className="w-3.5 h-3.5 text-brand-400" /> 30 dagen retour</span>
-          <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-brand-400" /> 2 jaar garantie</span>
+          <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-brand-400" /> 6 maanden garantie</span>
+          <span className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-brand-400" /> 72-punten inspectie</span>
         </div>
       </div>
 
@@ -44,20 +57,20 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className={`absolute inset-x-0 top-full bg-white border-b border-slate-200 p-4 lg:static lg:bg-transparent lg:border-0 lg:p-0 lg:flex-1 lg:max-w-md ${searchOpen ? 'block' : 'hidden lg:block'}`}>
-            <div className="relative">
+          <div className="hidden lg:block lg:flex-1 lg:max-w-md">
+            <button
+              onClick={openSearch}
+              className="w-full flex items-center gap-3 pl-10 pr-4 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 transition text-sm text-slate-500 relative"
+            >
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                type="search"
-                placeholder="Zoek naar iPhone, Samsung, Pixel..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-full bg-slate-100 border border-transparent focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20 transition text-sm"
-              />
-            </div>
+              Zoek naar iPhone, Samsung, Pixel...
+              <span className="ml-auto text-xs font-semibold border border-slate-300 rounded px-1.5 py-0.5 text-slate-500">⌘K</span>
+            </button>
           </div>
 
           <div className="flex items-center gap-1">
             <button
-              onClick={() => setSearchOpen(!searchOpen)}
+              onClick={openSearch}
               className="lg:hidden p-2 rounded-full hover:bg-slate-100"
               aria-label="Zoeken"
             >
@@ -103,6 +116,7 @@ export default function Header() {
           </div>
         )}
       </div>
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

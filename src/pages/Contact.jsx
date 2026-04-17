@@ -88,9 +88,9 @@ export default function Contact() {
                       <select className="input" required>
                         <option value="">Kies een onderwerp</option>
                         <option>Bestelling</option>
-                        <option>Retour</option>
                         <option>Garantie</option>
                         <option>Verkopen</option>
+                        <option>Product vraag</option>
                         <option>Overig</option>
                       </select>
                     </div>

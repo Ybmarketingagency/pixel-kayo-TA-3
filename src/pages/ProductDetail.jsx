@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   ChevronRight, Heart, ShoppingBag, Star, BatteryMedium, Truck, ShieldCheck,
-  RotateCcw, CheckCircle2, Minus, Plus, Zap
+  CheckCircle2, Minus, Plus, Zap
 } from 'lucide-react';
 import { getProduct, getCondition, products } from '../data/products.js';
 import ProductCard from '../components/ProductCard.jsx';
@@ -77,7 +77,7 @@ export default function ProductDetail() {
                 Bespaar €{product.originalPrice - product.price}
               </span>
             </div>
-            <p className="mt-1 text-xs text-slate-500">of 3x €{Math.round(product.price / 3)} achteraf betalen · 0% rente</p>
+            <p className="mt-1 text-xs text-slate-500">Direct betalen met iDEAL, Bancontact of Apple Pay</p>
 
             <div className="mt-6 flex items-center gap-2 text-sm">
               <BatteryMedium className="w-4 h-4 text-emerald-600" />
@@ -128,9 +128,9 @@ export default function ProductDetail() {
             {/* Perks */}
             <div className="mt-8 grid grid-cols-3 gap-3">
               {[
-                { icon: ShieldCheck, text: '2 jaar garantie' },
+                { icon: ShieldCheck, text: '6 maanden garantie' },
                 { icon: Truck, text: 'Gratis verzending' },
-                { icon: RotateCcw, text: '30 dagen retour' }
+                { icon: CheckCircle2, text: '72-punten check' }
               ].map((p) => (
                 <div key={p.text} className="flex flex-col items-center text-center p-4 rounded-2xl bg-slate-50">
                   <p.icon className="w-5 h-5 text-brand-600 mb-2" />

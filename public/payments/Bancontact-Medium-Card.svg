@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 40" width="60" height="40">
+  <rect width="60" height="40" rx="4" fill="#FFFFFF"/>
+  <rect x="4" y="10" width="24" height="20" rx="2" fill="#005498"/>
+  <rect x="32" y="10" width="24" height="20" rx="2" fill="#FFD800"/>
+  <text x="16" y="24" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">bc</text>
+  <text x="44" y="24" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" font-weight="700" fill="#005498">Contact</text>
+</svg>

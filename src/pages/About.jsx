@@ -4,9 +4,9 @@ import { Leaf, Users, Smartphone, Cloud, ArrowRight, Target, Heart, Recycle, Spa
 export default function About() {
   const goals = [
     { v: '72-punten', l: 'Inspectie per telefoon', i: Target },
-    { v: '2 jaar', l: 'Garantie op elk toestel', i: Heart },
-    { v: '85%+', l: 'Batterij garantie', i: Smartphone },
-    { v: '30 dagen', l: 'Retour zonder reden', i: Recycle }
+    { v: '6 maanden', l: 'Garantie op elk toestel', i: Heart },
+    { v: '85%+', l: 'Batterij check', i: Smartphone },
+    { v: 'Gratis', l: 'Verzending & verpakking', i: Recycle }
   ];
 
   const values = [

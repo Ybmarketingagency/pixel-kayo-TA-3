@@ -27,8 +27,8 @@ const cols = [
     links: [
       { to: '/klantenservice', label: 'Helpcentrum' },
       { to: '/contact', label: 'Contact' },
-      { to: '/klantenservice', label: 'Retourneren' },
-      { to: '/klantenservice', label: 'Garantie' }
+      { to: '/klantenservice', label: 'Garantie' },
+      { to: '/klantenservice', label: 'Veelgestelde vragen' }
     ]
   },
   {
@@ -90,7 +90,7 @@ export default function Footer() {
           <div className="flex items-center gap-3 flex-wrap">
             {[
               { src: '/payments/iDEAL-Medium-Card.svg', alt: 'iDEAL' },
-              { src: '/payments/Mastercard-Medium-Card.svg', alt: 'Mastercard' },
+              { src: '/payments/Bancontact-Medium-Card.svg', alt: 'Bancontact' },
               { src: '/payments/Apple-Pay-Medium-Card.svg', alt: 'Apple Pay' }
             ].map((p) => (
               <div

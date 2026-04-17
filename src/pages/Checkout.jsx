@@ -21,9 +21,8 @@ export default function Checkout() {
 
   const paymentMethods = [
     { k: 'ideal', t: 'iDEAL', d: 'Direct betalen via je bank', img: '/payments/iDEAL-Medium-Card.svg' },
-    { k: 'card', t: 'Mastercard', d: 'Betaal met je creditcard', img: '/payments/Mastercard-Medium-Card.svg' },
-    { k: 'apple', t: 'Apple Pay', d: 'Snel betalen met Apple Pay', img: '/payments/Apple-Pay-Medium-Card.svg' },
-    { k: 'klarna', t: 'Klarna', d: 'Achteraf betalen in 3 termijnen', img: null }
+    { k: 'bancontact', t: 'Bancontact', d: 'Betaal direct met je Belgische bank', img: '/payments/Bancontact-Medium-Card.svg' },
+    { k: 'apple', t: 'Apple Pay', d: 'Snel betalen met Apple Pay', img: '/payments/Apple-Pay-Medium-Card.svg' }
   ];
 
   return (
@@ -209,7 +208,7 @@ export default function Checkout() {
               </div>
 
               <div className="mt-6 space-y-2 text-xs text-slate-500">
-                <div className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-brand-600" /> 2 jaar garantie</div>
+                <div className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-brand-600" /> 6 maanden garantie</div>
                 <div className="flex items-center gap-2"><Truck className="w-3.5 h-3.5 text-brand-600" /> Gratis verzending</div>
                 <div className="flex items-center gap-2"><CreditCard className="w-3.5 h-3.5 text-brand-600" /> Veilig betalen</div>
               </div>

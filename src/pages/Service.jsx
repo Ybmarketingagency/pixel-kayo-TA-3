@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { HelpCircle, Package, Truck, RotateCcw, ShieldCheck, CreditCard, ChevronDown, Search } from 'lucide-react';
+import { HelpCircle, Package, Truck, ShieldCheck, CreditCard, ChevronDown, Search, CheckCircle2 } from 'lucide-react';
 
 const categories = [
   {
     i: Package, t: 'Bestellingen', k: 'orders', faqs: [
       { q: 'Hoe plaats ik een bestelling?', a: 'Kies een telefoon, selecteer je opties en klik op "In winkelwagen". Daarna ga je naar de checkout om af te rekenen.' },
       { q: 'Kan ik mijn bestelling wijzigen?', a: 'Ja, binnen 1 uur na je bestelling kun je contact opnemen met onze klantenservice om wijzigingen door te voeren.' },
-      { q: 'Welke betaalmethoden accepteren jullie?', a: 'We accepteren iDEAL, Bancontact, creditcard, PayPal, Apple Pay en achteraf betalen via Klarna.' }
+      { q: 'Welke betaalmethoden accepteren jullie?', a: 'We accepteren iDEAL, Bancontact en Apple Pay. Alle betalingen zijn direct — we werken niet met achteraf betalen of Klarna.' }
     ]
   },
   {
@@ -17,20 +17,23 @@ const categories = [
     ]
   },
   {
-    i: RotateCcw, t: 'Retour', k: 'returns', faqs: [
-      { q: 'Hoeveel dagen retourrecht heb ik?', a: 'Je hebt 30 dagen de tijd om je bestelling kosteloos te retourneren, om welke reden dan ook.' },
-      { q: 'Hoe stuur ik iets terug?', a: 'Ga naar je account, klik op "Retourneren" en wij mailen je een gratis retourlabel.' }
+    i: ShieldCheck, t: 'Garantie', k: 'warranty', faqs: [
+      { q: 'Hoe lang is de garantie?', a: 'Elke refurbished telefoon komt met 6 maanden garantie op alle onderdelen en functies.' },
+      { q: 'Wat valt er onder de garantie?', a: 'Alle fabricagefouten en interne defecten vallen onder de garantie. Schade door vallen, vocht of verkeerd gebruik valt er niet onder.' },
+      { q: 'Hoe claim ik mijn garantie?', a: 'Neem contact op via het contactformulier met je bestelnummer en een omschrijving van het probleem. We reageren binnen 24 uur.' }
     ]
   },
   {
-    i: ShieldCheck, t: 'Garantie', k: 'warranty', faqs: [
-      { q: 'Hoe lang is de garantie?', a: 'Elke refurbished telefoon komt met 2 jaar volledige garantie op alle onderdelen.' },
-      { q: 'Wat valt er onder de garantie?', a: 'Alle fabricagefouten en interne defecten. Schade door vallen of water valt er niet onder.' }
+    i: CheckCircle2, t: 'Kwaliteit', k: 'quality', faqs: [
+      { q: 'Wat is de 72-punten check?', a: 'Elke telefoon doorloopt een uitgebreide inspectie op 72 onderdelen: scherm, batterij, camera\'s, luidsprekers, knoppen, poorten en alle software-functies.' },
+      { q: 'Hoe goed is de batterij?', a: 'We garanderen minimaal 85% batterijcapaciteit op elk toestel. Batterijen die daaronder zitten, worden vervangen.' },
+      { q: 'Welke staten zijn er?', a: 'We verkopen in 4 staten: Als nieuw, Uitstekend, Goed en Redelijk. De staat bepaalt het uiterlijk — alle toestellen werken 100%.' }
     ]
   },
   {
     i: CreditCard, t: 'Betalen', k: 'payment', faqs: [
-      { q: 'Kan ik achteraf betalen?', a: 'Ja, via Klarna kun je in 3 termijnen van 0% rente betalen.' },
+      { q: 'Welke betaalmethoden zijn er?', a: 'Je kunt direct betalen met iDEAL, Bancontact of Apple Pay.' },
+      { q: 'Kan ik achteraf betalen?', a: 'Nee, we werken uitsluitend met directe betaalmethoden. Achteraf betalen via Klarna of andere providers is niet mogelijk.' },
       { q: 'Is betalen veilig?', a: 'Al onze betalingen lopen via gecertificeerde betaalproviders met SSL-versleuteling.' }
     ]
   }

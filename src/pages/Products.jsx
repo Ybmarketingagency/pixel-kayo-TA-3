@@ -43,7 +43,7 @@ export default function Products() {
             Alle <span className="gradient-text">telefoons</span>
           </h1>
           <p className="mt-4 text-slate-300 max-w-xl">
-            Getest, gegarandeerd en klaar om te gebruiken. Kies uit {products.length}+ refurbished modellen met 2 jaar garantie.
+            Getest, gegarandeerd en klaar om te gebruiken. Kies uit {products.length}+ refurbished modellen met 6 maanden garantie.
           </p>
         </div>
       </section>

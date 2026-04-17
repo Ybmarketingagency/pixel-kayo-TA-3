@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ShieldCheck, RotateCcw, BatteryFull, Truck, Leaf, Award, Sparkles,
+  ShieldCheck, BatteryFull, Truck, Leaf, Award, Sparkles,
   ArrowRight, Recycle, CheckCircle2, Star, Quote, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import ProductCard from '../components/ProductCard.jsx';
 import { products } from '../data/products.js';
 
 const trust = [
-  { icon: ShieldCheck, title: '2 jaar garantie', desc: 'Volledige dekking, geen gedoe' },
-  { icon: RotateCcw, title: '30 dagen retour', desc: 'Van gedachten veranderd? Prima.' },
-  { icon: BatteryFull, title: '85%+ batterij', desc: 'Of wij vervangen hem' },
+  { icon: ShieldCheck, title: '6 maanden garantie', desc: 'Volledige dekking, geen gedoe' },
+  { icon: CheckCircle2, title: '72-punten check', desc: 'Elke telefoon getest en goedgekeurd' },
+  { icon: BatteryFull, title: '85%+ batterij', desc: 'Gecheckt op elk toestel' },
   { icon: Truck, title: 'Gratis verzending', desc: 'Ook nog CO2-neutraal' }
 ];
 
@@ -31,14 +31,14 @@ const process = [
 
 const reviews = [
   { name: 'Sanne de Vries', text: 'Mijn iPhone 14 ziet eruit als nieuw en werkt perfect. De besparing was enorm en de levering ging razendsnel.', rating: 5, product: 'iPhone 14' },
-  { name: 'Mark Janssen', text: 'Snelle levering, goed verpakt. De 2 jaar garantie gaf me het vertrouwen om refurbished te proberen.', rating: 5, product: 'Samsung Galaxy S23' },
+  { name: 'Mark Janssen', text: 'Snelle levering, goed verpakt. De garantie gaf me het vertrouwen om refurbished te proberen.', rating: 5, product: 'Samsung Galaxy S23' },
   { name: 'Lisa Bakker', text: 'Supergoed proces. Ik verkocht mijn oude telefoon en kreeg direct mijn nieuwe. Alles binnen één week geregeld.', rating: 5, product: 'iPhone 15 Pro' },
   { name: 'Tom van Dijk', text: 'Prachtige kwaliteit, geen krasje te bekennen. De batterij is top en alles werkt als vanouds.', rating: 5, product: 'Google Pixel 8' },
   { name: 'Emma Visser', text: 'Ik was sceptisch over refurbished, maar Pixel heeft me overtuigd. Geweldige klantenservice ook!', rating: 5, product: 'iPhone 13' },
   { name: 'Daan Smit', text: 'Beste keuze ooit. Bespaarde honderden euro\'s en nog goed voor de planeet ook.', rating: 5, product: 'OnePlus 11' },
   { name: 'Fleur Hendriks', text: 'Communicatie was uitstekend, track & trace werkt perfect. Mijn telefoon kwam in mint conditie.', rating: 5, product: 'iPhone 12' },
   { name: 'Julian Bos', text: 'Van bestelling tot ontvangst: alles gladjes verlopen. Absoluut een aanrader voor iedereen.', rating: 5, product: 'Galaxy S22' },
-  { name: 'Nina Peters', text: 'Super blij met mijn aankoop. De 30 dagen retour gaf me de rust om te proberen, maar houden!', rating: 5, product: 'Xiaomi 13' }
+  { name: 'Nina Peters', text: 'Super blij met mijn aankoop. Snelle levering en de telefoon werkt perfect!', rating: 5, product: 'Xiaomi 13' }
 ];
 
 const REVIEWS_PER_PAGE = 3;
@@ -80,8 +80,8 @@ export default function Home() {
             <div className="mt-14 grid grid-cols-3 gap-4 max-w-xl mx-auto">
               {[
                 { v: '72-punten', l: 'Inspectie per toestel' },
-                { v: '30 dagen', l: 'Retour zonder reden' },
-                { v: '2 jaar', l: 'Garantie op alles' }
+                { v: '6 maanden', l: 'Garantie op alles' },
+                { v: 'Gratis', l: 'Verzending & verpakking' }
               ].map((s) => (
                 <div key={s.l} className="text-center">
                   <div className="text-2xl md:text-3xl font-black gradient-text">{s.v}</div>
