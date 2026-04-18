@@ -12,9 +12,16 @@ const nav = [
   { to: '/klantenservice', label: 'Klantenservice' }
 ];
 
+const topBarItems = [
+  { icon: Truck, text: 'Gratis verzending' },
+  { icon: ShieldCheck, text: '6 maanden garantie' },
+  { icon: CheckCircle2, text: '72-punten inspectie' }
+];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [topIndex, setTopIndex] = useState(0);
   const openSearch = () => setSearchOpen(true);
 
   useEffect(() => {
@@ -28,14 +35,37 @@ export default function Header() {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
+  // Rotate top-bar bullet on mobile
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTopIndex((i) => (i + 1) % topBarItems.length);
+    }, 3000);
+    return () => clearInterval(id);
+  }, []);
+
+  const ActiveIcon = topBarItems[topIndex].icon;
+
   return (
     <header className="sticky top-0 z-40">
       {/* Top bar */}
-      <div className="bg-navy-900 text-white text-xs">
-        <div className="container-x flex items-center justify-center py-2 gap-6 md:gap-10 flex-wrap">
-          <span className="flex items-center gap-2"><Truck className="w-3.5 h-3.5 text-brand-400" /> Gratis verzending</span>
-          <span className="flex items-center gap-2"><ShieldCheck className="w-3.5 h-3.5 text-brand-400" /> 6 maanden garantie</span>
-          <span className="flex items-center gap-2"><CheckCircle2 className="w-3.5 h-3.5 text-brand-400" /> 72-punten inspectie</span>
+      <div className="bg-navy-900 text-white text-[11px] md:text-xs">
+        {/* Mobile: 1 item, auto-rotate */}
+        <div className="md:hidden container-x flex items-center justify-center py-1.5 h-7 overflow-hidden">
+          <span
+            key={topIndex}
+            className="flex items-center gap-2 animate-[fadeIn_0.4s_ease]"
+          >
+            <ActiveIcon className="w-3.5 h-3.5 text-brand-400" />
+            {topBarItems[topIndex].text}
+          </span>
+        </div>
+        {/* Desktop: all 3 at once */}
+        <div className="hidden md:flex container-x items-center justify-center py-2 gap-10">
+          {topBarItems.map(({ icon: Icon, text }) => (
+            <span key={text} className="flex items-center gap-2">
+              <Icon className="w-3.5 h-3.5 text-brand-400" /> {text}
+            </span>
+          ))}
         </div>
       </div>
 
