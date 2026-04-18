@@ -8,10 +8,10 @@ import ProductCard from '../components/ProductCard.jsx';
 import { products } from '../data/products.js';
 
 const trust = [
-  { icon: ShieldCheck, title: '6 maanden garantie', desc: 'Volledige dekking, geen gedoe' },
-  { icon: CheckCircle2, title: '72-punten check', desc: 'Elke telefoon getest en goedgekeurd' },
-  { icon: BatteryFull, title: '85%+ batterij', desc: 'Gecheckt op elk toestel' },
-  { icon: Truck, title: 'Gratis verzending', desc: 'Ook nog CO2-neutraal' }
+  { icon: ShieldCheck, title: '6 maanden garantie', desc: 'Volledige dekking' },
+  { icon: CheckCircle2, title: '72-punten check', desc: 'Elke telefoon getest' },
+  { icon: BatteryFull, title: '85%+ batterij', desc: 'Op elk toestel gecheckt' },
+  { icon: Truck, title: 'Gratis verzending', desc: 'CO2-neutraal bezorgd' }
 ];
 
 const process = [
@@ -79,12 +79,12 @@ export default function Home() {
 
             <div className="mt-14 grid grid-cols-3 gap-4 max-w-xl mx-auto">
               {[
-                { v: '72-punten', l: 'Inspectie per toestel' },
-                { v: '6 maanden', l: 'Garantie op alles' },
-                { v: 'Gratis', l: 'Verzending & verpakking' }
+                { v: '72', l: 'Punten inspectie' },
+                { v: '6 mnd', l: 'Garantie' },
+                { v: 'Gratis', l: 'Verzending' }
               ].map((s) => (
                 <div key={s.l} className="text-center">
-                  <div className="text-2xl md:text-3xl font-black gradient-text">{s.v}</div>
+                  <div className="text-2xl md:text-3xl font-black gradient-text whitespace-nowrap">{s.v}</div>
                   <div className="text-xs md:text-sm text-slate-500 mt-1">{s.l}</div>
                 </div>
               ))}
