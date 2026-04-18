@@ -110,7 +110,7 @@ export default function Home() {
               {/* Phone image */}
               <div className="relative z-10 animate-float">
                 <img
-                  src="/products/iphone-15-pro-natural/02.jpg"
+                  src="/products/iphone-15/01.jpg"
                   alt="iPhone"
                   className="w-56 sm:w-72 lg:w-80 xl:w-96 drop-shadow-2xl select-none pointer-events-none"
                 />
