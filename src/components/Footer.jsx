@@ -88,9 +88,22 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} Pixel — Alle rechten voorbehouden
-          </p>
+          <div className="flex flex-col gap-1">
+            <p className="text-xs text-slate-500">
+              © {new Date().getFullYear()} Pixel — Alle rechten voorbehouden
+            </p>
+            <p className="text-xs text-slate-400">
+              Gemaakt door{' '}
+              <a
+                href="https://techazura.nl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-slate-600 hover:text-brand-700 transition"
+              >
+                TechAzura
+              </a>
+            </p>
+          </div>
           <div className="flex items-center gap-3 flex-wrap">
             {[
               { src: '/payments/iDEAL-Medium-Card.svg', alt: 'iDEAL' },

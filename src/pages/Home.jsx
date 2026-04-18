@@ -4,7 +4,7 @@ import {
   ShieldCheck, BatteryFull, Truck, Leaf, Award, Sparkles,
   ArrowRight, Recycle, CheckCircle2, Star, Quote, ChevronLeft, ChevronRight
 } from 'lucide-react';
-import ProductCard from '../components/ProductCard.jsx';
+import ProductSlider from '../components/ProductSlider.jsx';
 import { products } from '../data/products.js';
 
 const trust = [
@@ -180,25 +180,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PRODUCTS */}
+      {/* PRODUCTS - iPhone slider */}
       <section className="section-pad">
         <div className="container-x">
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
+          <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
             <div>
-              <span className="chip mb-3"><Sparkles className="w-3 h-3" /> Hot Deals</span>
+              <span className="chip mb-3"><Sparkles className="w-3 h-3" /> iPhone</span>
               <h2 className="text-3xl md:text-5xl font-black tracking-tight">
-                Telefoons waar mensen <span className="gradient-text">van houden</span>
+                iPhones waar mensen <span className="gradient-text">van houden</span>
               </h2>
             </div>
-            <Link to="/products" className="text-sm font-semibold text-brand-700 hover:text-brand-800 inline-flex items-center gap-1">
-              Bekijk alles <ArrowRight className="w-4 h-4" />
+            <Link to="/products?brand=Apple" className="text-sm font-semibold text-brand-700 hover:text-brand-800 inline-flex items-center gap-1">
+              Bekijk alle iPhones <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {products.slice(0, 8).map((p) => (
-              <ProductCard key={p.slug} product={p} />
-            ))}
+          <ProductSlider products={products.filter((p) => p.brand === 'Apple')} />
+        </div>
+      </section>
+
+      {/* PRODUCTS - Samsung slider */}
+      <section className="pb-16 md:pb-24">
+        <div className="container-x">
+          <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
+            <div>
+              <span className="chip mb-3"><Sparkles className="w-3 h-3" /> Samsung</span>
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight">
+                Samsung <span className="gradient-text">Galaxy</span> top-modellen
+              </h2>
+            </div>
+            <Link to="/products?brand=Samsung" className="text-sm font-semibold text-brand-700 hover:text-brand-800 inline-flex items-center gap-1">
+              Bekijk alle Samsungs <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
+          <ProductSlider products={products.filter((p) => p.brand === 'Samsung')} />
         </div>
       </section>
 

@@ -8,6 +8,23 @@ import { getProduct, products } from '../data/products.js';
 import ProductCard from '../components/ProductCard.jsx';
 import { productOrderUrl } from '../lib/whatsapp.js';
 
+/** Map color name (Dutch or English) to a swatch CSS background. */
+function colorSwatch(name = '') {
+  const n = name.toLowerCase();
+  if (n.includes('zwart') || n.includes('black')) return '#1e293b';
+  if (n.includes('wit') || n.includes('white') || n.includes('snow')) return '#f8fafc';
+  if (n.includes('blauw') || n.includes('blue')) return '#2563eb';
+  if (n.includes('goud') || n.includes('gold')) return '#d4af37';
+  if (n.includes('roze') || n.includes('pink') || n.includes('rose')) return '#f9a8d4';
+  if (n.includes('groen') || n.includes('green')) return '#166534';
+  if (n.includes('grijs') || n.includes('grey') || n.includes('gray') || n.includes('phantom')) return '#64748b';
+  if (n.includes('natural') || n.includes('naturel')) return '#c6a879';
+  if (n.includes('desert')) return '#b89778';
+  if (n.includes('starlight')) return '#e5e4e2';
+  if (n.includes('midnight')) return '#0f172a';
+  return 'linear-gradient(135deg,#14b8a6,#06b6d4)';
+}
+
 export default function ProductDetail() {
   const { slug } = useParams();
   const product = getProduct(slug) || products[0];
@@ -39,11 +56,23 @@ export default function ProductDetail() {
           {/* Gallery */}
           <div>
             <div className="card aspect-square overflow-hidden bg-gradient-to-br from-slate-50 to-slate-100 relative">
-              <img src={images[active]} alt={product.name} className="w-full h-full object-contain p-8" />
-              {discount > 0 && (
+              <img src={images[active]} alt={product.name} className={`w-full h-full object-contain p-8 ${product.sold ? 'grayscale opacity-70' : ''}`} />
+              {!product.sold && discount > 0 && (
                 <span className="absolute top-4 right-4 text-sm font-bold px-3 py-1.5 rounded-full bg-rose-600 text-white">
                   -{discount}%
                 </span>
+              )}
+              {product.sold && (
+                <>
+                  <div className="absolute inset-0 bg-slate-900/15 pointer-events-none" />
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-12 -right-20 w-[180%] rotate-[-20deg] bg-gradient-to-r from-rose-600 to-red-600 text-white text-center py-3 shadow-xl ring-1 ring-white/30">
+                      <span className="text-xl md:text-2xl font-black tracking-[0.2em] uppercase drop-shadow">
+                        Verkocht
+                      </span>
+                    </div>
+                  </div>
+                </>
               )}
             </div>
             <div className="mt-4 grid grid-cols-6 gap-2 sm:gap-3">
@@ -89,58 +118,51 @@ export default function ProductDetail() {
               <span className="text-slate-600">Getest en goedgekeurd</span>
             </div>
 
-            {/* Color info */}
-            <div className="mt-8">
-              <div className="text-sm font-semibold mb-2">Kleur</div>
+            {/* Spec pills: this is the one toestel we have */}
+            <div className="mt-8 flex flex-wrap gap-2">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-sm font-medium">
-                <span className="w-3 h-3 rounded-full bg-gradient-to-br from-brand-400 to-cyan-400" />
+                <span
+                  className="w-3 h-3 rounded-full border border-slate-300"
+                  style={{ background: colorSwatch(product.color) }}
+                />
                 {product.color}
               </div>
-            </div>
-
-            {/* Storage */}
-            <div className="mt-6">
-              <div className="text-sm font-semibold mb-3">Opslag</div>
-              <div className="flex gap-2">
-                {storageOptions.map((s) => (
-                  <button
-                    key={s}
-                    onClick={() => setSelectedStorage(s)}
-                    className={`px-4 py-2.5 rounded-full border text-sm font-medium transition ${
-                      selectedStorage === s
-                        ? 'border-brand-500 bg-brand-50 text-brand-700'
-                        : 'border-slate-200 hover:border-slate-300'
-                    }`}
-                  >
-                    {s}
-                  </button>
-                ))}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-slate-50 text-sm font-medium">
+                {product.storage}
               </div>
             </div>
+            <p className="mt-2 text-xs text-slate-500">Uniek toestel — de foto's zijn van deze specifieke telefoon.</p>
 
             {/* Quantity + CTA */}
-            <div className="mt-8 flex items-center gap-4">
-              <div className="flex items-center border border-slate-200 rounded-full">
-                <button onClick={() => setQty(Math.max(1, qty - 1))} className="p-3 hover:bg-slate-50 rounded-l-full">
-                  <Minus className="w-4 h-4" />
-                </button>
-                <span className="w-10 text-center font-semibold">{qty}</span>
-                <button onClick={() => setQty(qty + 1)} className="p-3 hover:bg-slate-50 rounded-r-full">
-                  <Plus className="w-4 h-4" />
+            {product.sold ? (
+              <div className="mt-8 p-5 rounded-2xl bg-slate-100 border border-slate-200 text-center">
+                <div className="text-sm font-semibold uppercase tracking-wide text-slate-500 mb-1">Niet op voorraad</div>
+                <div className="text-lg font-bold text-slate-900">Dit toestel is verkocht</div>
+              </div>
+            ) : (
+              <div className="mt-8 flex items-center gap-4">
+                <div className="flex items-center border border-slate-200 rounded-full">
+                  <button onClick={() => setQty(Math.max(1, qty - 1))} className="p-3 hover:bg-slate-50 rounded-l-full">
+                    <Minus className="w-4 h-4" />
+                  </button>
+                  <span className="w-10 text-center font-semibold">{qty}</span>
+                  <button onClick={() => setQty(qty + 1)} className="p-3 hover:bg-slate-50 rounded-r-full">
+                    <Plus className="w-4 h-4" />
+                  </button>
+                </div>
+                <a
+                  href={orderHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary flex-1 !bg-gradient-to-r !from-emerald-500 !to-emerald-600"
+                >
+                  <MessageCircle className="w-4 h-4" /> Bestel via WhatsApp
+                </a>
+                <button className="p-3 rounded-full border border-slate-200 hover:border-rose-500 hover:text-rose-600 transition">
+                  <Heart className="w-5 h-5" />
                 </button>
               </div>
-              <a
-                href={orderHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary flex-1 !bg-gradient-to-r !from-emerald-500 !to-emerald-600"
-              >
-                <MessageCircle className="w-4 h-4" /> Bestel via WhatsApp
-              </a>
-              <button className="p-3 rounded-full border border-slate-200 hover:border-rose-500 hover:text-rose-600 transition">
-                <Heart className="w-5 h-5" />
-              </button>
-            </div>
+            )}
 
             {/* Perks */}
             <div className="mt-8 grid grid-cols-3 gap-3">

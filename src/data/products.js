@@ -35,6 +35,7 @@ export const products = [
     originalPrice: 1159,
     rating: 4.8,
     reviews: 98,
+    sold: true,
     images: img('iphone-13-pro'),
     description: 'iPhone 13 Pro met Pro camerasysteem, ProMotion display en A15 Bionic chip.'
   },
@@ -49,6 +50,7 @@ export const products = [
     originalPrice: 1389,
     rating: 4.9,
     reviews: 84,
+    sold: true,
     images: img('iphone-13-pro-max'),
     description: 'iPhone 13 Pro Max met 6,7" ProMotion display en Pro camerasysteem.'
   },
