@@ -227,6 +227,7 @@ export const products = [
     originalPrice: 1249,
     rating: 4.7,
     reviews: 132,
+    sold: true,
     images: img('samsung-s22-ultra'),
     description: 'Galaxy S22 Ultra met ingebouwde S Pen, 108MP camera en 100x Space Zoom.'
   },
@@ -241,6 +242,7 @@ export const products = [
     originalPrice: 1399,
     rating: 4.8,
     reviews: 118,
+    sold: true,
     images: img('samsung-s23-ultra'),
     description: 'Galaxy S23 Ultra met 200MP hoofdcamera, S Pen en Snapdragon 8 Gen 2.'
   },
@@ -255,6 +257,7 @@ export const products = [
     originalPrice: 899,
     rating: 4.7,
     reviews: 76,
+    sold: true,
     images: img('samsung-s24-grey'),
     description: 'Galaxy S24 met Galaxy AI, Exynos 2400 en slanke titanium look.'
   },
@@ -269,6 +272,7 @@ export const products = [
     originalPrice: 899,
     rating: 4.7,
     reviews: 89,
+    sold: true,
     images: img('samsung-s24-black'),
     description: 'Galaxy S24 met Galaxy AI-functies, triple camera en 6,2" Dynamic AMOLED.'
   },
@@ -283,6 +287,7 @@ export const products = [
     originalPrice: 849,
     rating: 4.8,
     reviews: 34,
+    sold: true,
     images: img('samsung-s25-fe'),
     description: 'Galaxy S25 FE — het beste van Samsung\'s vlaggenschip voor een vriendelijke prijs.'
   },
@@ -297,6 +302,7 @@ export const products = [
     originalPrice: 1499,
     rating: 5.0,
     reviews: 52,
+    sold: true,
     images: img('samsung-s25-ultra-grey'),
     description: 'Galaxy S25 Ultra in Titanium Grijs met Snapdragon 8 Elite en 200MP camera.'
   },
@@ -311,6 +317,7 @@ export const products = [
     originalPrice: 1499,
     rating: 5.0,
     reviews: 41,
+    sold: true,
     images: img('samsung-s25-ultra-white'),
     description: 'Galaxy S25 Ultra in Titanium Wit — premium design met Galaxy AI.'
   }
