@@ -3,7 +3,9 @@
 
 export const brands = ['Apple', 'Samsung'];
 
-const img = (slug, n = 5) =>
+// Image order per product folder:
+//   01 = achterkant, 02 = voorkant, 03 = boven, 04 = onder, 05 = links, 06 = rechts
+const img = (slug, n = 6) =>
   Array.from({ length: n }, (_, i) => `/products/${slug}/0${i + 1}.jpg`);
 
 export const products = [
