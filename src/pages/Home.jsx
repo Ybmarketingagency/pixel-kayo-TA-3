@@ -56,38 +56,106 @@ export default function Home() {
           <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-brand-200/60 to-cyan-200/40 blur-3xl" />
           <div className="absolute top-1/2 -left-32 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-cyan-200/40 to-brand-100/40 blur-3xl" />
         </div>
-        <div className="container-x pt-16 pb-20 md:pt-24 md:pb-28">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 border border-brand-200 text-brand-800 text-sm font-medium mb-6">
-              <Recycle className="w-4 h-4" />
-              Goed voor je portemonnee. Geweldig voor de planeet.
-            </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05]">
-              Tech die <span className="gradient-text">vriendelijk is</span> voor de aarde
-            </h1>
-            <p className="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
-              Waarom nieuw kopen als refurbished net zo goed is? Krijg premium telefoons met tot <strong>70% korting</strong>, terwijl je de planeet een pauze geeft.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link to="/products" className="btn-primary">
-                Bekijk telefoons <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link to="/verkopen" className="btn-outline">
-                Verkoop je telefoon
-              </Link>
+        <div className="container-x pt-10 pb-16 md:pt-20 md:pb-24">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+            {/* Text */}
+            <div className="text-center lg:text-left order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 border border-brand-200 text-brand-800 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+                <Recycle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Goed voor je portemonnee. Geweldig voor de planeet.</span>
+                <span className="sm:hidden">Goed voor jou &amp; de planeet</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05]">
+                Tech die <span className="gradient-text">vriendelijk is</span> voor de aarde
+              </h1>
+              {/* Long copy only on desktop */}
+              <p className="hidden sm:block mt-6 text-lg text-slate-600 max-w-xl lg:mx-0 mx-auto">
+                Waarom nieuw kopen als refurbished net zo goed is? Krijg premium telefoons met tot <strong>70% korting</strong>, terwijl je de planeet een pauze geeft.
+              </p>
+              {/* Short copy on mobile */}
+              <p className="sm:hidden mt-4 text-base text-slate-600">
+                Premium refurbished iPhones &amp; Samsungs. Tot <strong>70% korting</strong>.
+              </p>
+
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
+                <Link to="/products" className="btn-primary">
+                  Bekijk telefoons <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link to="/verkopen" className="btn-outline">
+                  Verkoop je telefoon
+                </Link>
+              </div>
+
+              <div className="hidden sm:grid mt-10 lg:mt-12 grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+                {[
+                  { v: '72', l: 'Punten inspectie' },
+                  { v: '6 mnd', l: 'Garantie' },
+                  { v: 'Gratis', l: 'Verzending' }
+                ].map((s) => (
+                  <div key={s.l} className="text-center lg:text-left">
+                    <div className="text-2xl md:text-3xl font-black gradient-text whitespace-nowrap">{s.v}</div>
+                    <div className="text-xs md:text-sm text-slate-500 mt-1">{s.l}</div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="mt-14 grid grid-cols-3 gap-4 max-w-xl mx-auto">
-              {[
-                { v: '72', l: 'Punten inspectie' },
-                { v: '6 mnd', l: 'Garantie' },
-                { v: 'Gratis', l: 'Verzending' }
-              ].map((s) => (
-                <div key={s.l} className="text-center">
-                  <div className="text-2xl md:text-3xl font-black gradient-text whitespace-nowrap">{s.v}</div>
-                  <div className="text-xs md:text-sm text-slate-500 mt-1">{s.l}</div>
+            {/* Phone visual + floating cards */}
+            <div className="relative order-1 lg:order-2 flex justify-center items-center min-h-[340px] sm:min-h-[460px] lg:min-h-[520px]">
+              {/* Glow ring behind phone */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-56 h-56 sm:w-80 sm:h-80 lg:w-[400px] lg:h-[400px] rounded-full bg-gradient-to-br from-brand-300/40 to-cyan-300/40 blur-3xl" />
+              </div>
+
+              {/* Phone image */}
+              <div className="relative z-10 animate-float">
+                <img
+                  src="/products/iphone-15-pro-natural/02.jpg"
+                  alt="iPhone"
+                  className="w-56 sm:w-72 lg:w-80 xl:w-96 drop-shadow-2xl select-none pointer-events-none"
+                />
+              </div>
+
+              {/* Floating card: warranty */}
+              <div className="absolute top-4 left-2 sm:top-10 sm:left-0 lg:left-4 z-20 bg-white rounded-2xl shadow-xl border border-slate-100 px-3 py-2 sm:px-4 sm:py-3 flex items-center gap-2 sm:gap-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-brand-100 flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-brand-700" />
                 </div>
-              ))}
+                <div className="text-left">
+                  <div className="text-[11px] sm:text-xs font-bold leading-tight">6 mnd garantie</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500">Op elk toestel</div>
+                </div>
+              </div>
+
+              {/* Floating card: check */}
+              <div className="absolute top-2 right-2 sm:top-6 sm:right-0 lg:right-4 z-20 bg-white rounded-2xl shadow-xl border border-slate-100 px-3 py-2 sm:px-4 sm:py-3 flex items-center gap-2 sm:gap-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-cyan-100 flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-700" />
+                </div>
+                <div className="text-left">
+                  <div className="text-[11px] sm:text-xs font-bold leading-tight">72-punten check</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500">Elk toestel getest</div>
+                </div>
+              </div>
+
+              {/* Floating card: eco */}
+              <div className="absolute bottom-6 left-4 sm:bottom-12 sm:left-4 lg:left-8 z-20 bg-white rounded-2xl shadow-xl border border-slate-100 px-3 py-2 sm:px-4 sm:py-3 flex items-center gap-2 sm:gap-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                  <Leaf className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-700" />
+                </div>
+                <div className="text-left">
+                  <div className="text-[11px] sm:text-xs font-bold leading-tight">CO₂-neutraal</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-500">Groen bezorgd</div>
+                </div>
+              </div>
+
+              {/* Floating card: discount */}
+              <div className="absolute bottom-4 right-2 sm:bottom-8 sm:right-0 lg:right-6 z-20 bg-gradient-to-br from-brand-600 to-cyan-600 text-white rounded-2xl shadow-xl px-3 py-2 sm:px-4 sm:py-3">
+                <div className="text-left">
+                  <div className="text-xl sm:text-2xl font-black leading-none">-70%</div>
+                  <div className="text-[10px] sm:text-[11px] text-white/90 mt-1">Tot korting</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
