@@ -85,6 +85,30 @@ export default function ProductSlider({ products }) {
           </div>
         ))}
       </div>
+
+      {/* Mobile arrow controls under the slider */}
+      <div className="md:hidden mt-5 flex items-center justify-center gap-3">
+        <button
+          onClick={() => scroll(-1)}
+          disabled={!canLeft}
+          className={`w-11 h-11 rounded-full bg-white border border-slate-200 shadow-sm flex items-center justify-center transition ${
+            canLeft ? 'hover:border-brand-500 hover:text-brand-700' : 'opacity-40'
+          }`}
+          aria-label="Vorige"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={() => scroll(1)}
+          disabled={!canRight}
+          className={`inline-flex items-center gap-1.5 px-5 h-11 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-brand-600 to-cyan-600 shadow-md transition ${
+            canRight ? 'hover:scale-[1.02]' : 'opacity-40'
+          }`}
+          aria-label="Meer"
+        >
+          Meer telefoons <ChevronRight className="w-4 h-4" />
+        </button>
+      </div>
     </div>
   );
 }
