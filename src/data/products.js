@@ -277,21 +277,6 @@ export const products = [
     description: 'Galaxy S24 met Galaxy AI-functies, triple camera en 6,2" Dynamic AMOLED.'
   },
   {
-    slug: 'samsung-s25-fe',
-    name: 'Samsung Galaxy S25 FE',
-    brand: 'Samsung',
-    storage: '128GB',
-    color: 'Blauw',
-    battery: 97,
-    price: 499,
-    originalPrice: 849,
-    rating: 4.8,
-    reviews: 34,
-    sold: true,
-    images: img('samsung-s25-fe'),
-    description: 'Galaxy S25 FE — het beste van Samsung\'s vlaggenschip voor een vriendelijke prijs.'
-  },
-  {
     slug: 'samsung-s25-ultra-grey',
     name: 'Samsung Galaxy S25 Ultra',
     brand: 'Samsung',

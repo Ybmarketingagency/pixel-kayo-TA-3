@@ -24,7 +24,7 @@ export default function Sell() {
 
   const acceptedModels = [
     { brand: 'iPhone', models: ['iPhone 13 · 13 mini · 13 Pro · 13 Pro Max', 'iPhone 14 · 14 Plus · 14 Pro · 14 Pro Max', 'iPhone 15 · 15 Plus · 15 Pro · 15 Pro Max', 'iPhone 16 · 16 Plus · 16 Pro · 16 Pro Max'] },
-    { brand: 'Samsung', models: ['Galaxy S23 · S23+ · S23 Ultra · S23 FE', 'Galaxy S24 · S24+ · S24 Ultra · S24 FE', 'Galaxy S25 · S25+ · S25 Ultra · S25 FE'] }
+    { brand: 'Samsung', models: ['Galaxy S23 · S23+ · S23 Ultra', 'Galaxy S24 · S24+ · S24 Ultra', 'Galaxy S25 · S25+ · S25 Ultra'] }
   ];
 
   return (
