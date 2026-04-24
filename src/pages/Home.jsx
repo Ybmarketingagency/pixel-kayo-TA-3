@@ -74,7 +74,7 @@ export default function Home() {
               </p>
               {/* Short copy on mobile */}
               <p className="sm:hidden mt-4 text-base text-slate-600">
-                Premium refurbished iPhones &amp; Samsungs. Tot <strong>70% korting</strong>.
+                Premium refurbished iPhones &amp; Samsungs. Tot <strong>70% korting</strong> · Gratis bezorgd.
               </p>
 
               <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3">
