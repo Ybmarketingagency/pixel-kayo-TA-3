@@ -25,7 +25,7 @@ export default function Contact() {
             {[
               { i: Mail, t: 'Mail ons', v: 'hello@pixel.nl', s: 'Antwoord binnen 24 uur' },
               { i: Phone, t: 'Bel ons', v: '+31 20 123 4567', s: 'Ma-Vr 09:00 – 18:00' },
-              { i: MapPin, t: 'Bezoek ons', v: 'Keizersgracht 100, Amsterdam', s: 'Alleen op afspraak' }
+              { i: MapPin, t: 'Bezoek ons', v: 'Amersfoort', s: 'Alleen op afspraak' }
             ].map((c) => (
               <div key={c.t} className="card p-6">
                 <div className="w-11 h-11 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center mb-3">
